@@ -1,0 +1,7 @@
+#!/bin/sh
+# イメージを取得
+# Usage: bin/import version my-image-name
+# Required: docker
+set -eux
+base="http://dl-cdn.alpinelinux.org/alpine/latest-stable/releases/armhf"
+docker import "${base}/alpine-minirootfs-${1}-armhf.tar.gz" "${2}"

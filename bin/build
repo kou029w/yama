@@ -1,0 +1,15 @@
+#!/bin/sh
+# ビルド
+# Usage: bin/build
+# Required: docker-compose
+cd -- "$(dirname -- "$0")/.."
+set -eux
+version="$(bin/version)"
+bin/import "${version}" docker.pkg.github.com/kou029w/yama/minirootfs
+rm -rf dist
+mkdir dist
+bin/download "${version}" dist
+docker-compose run --rm minirootfs sh -c 'apk update && apk add'
+ssh-keygen -A -f apkovl
+cp -a cache dist
+tar czf dist/localhost.apkovl.tar.gz --owner=0 --group=0 -C apkovl .

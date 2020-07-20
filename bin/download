@@ -1,0 +1,8 @@
+#!/bin/sh
+# ベースのイメージをダウンロード
+# Usage: bin/download version dist
+# Required: curl
+set -eu
+base="http://dl-cdn.alpinelinux.org/alpine/latest-stable/releases/armhf"
+curl "${base}/alpine-rpi-${1}-armhf.tar.gz" \
+  | tar xzf - -C "${2}"
