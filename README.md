@@ -33,6 +33,7 @@ rsync -a dist/ /path/to/sd/
 - ruby
 - ssh-keygen
 - bash
+- qemu-user-static
 
 ### WiFi の設定
 
