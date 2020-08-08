@@ -26,6 +26,9 @@ rsync -a dist/ /path/to/sd/
 
 ### 前提条件
 
+- Linux Kernel 4.8+
+- binfmt-support 2.1.7+
+- Docker
 - Docker Compose
 - curl
 - grep
