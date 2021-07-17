@@ -49,3 +49,8 @@ bin/conf-gen | tee apkovl/etc/wpa_supplicant/wpa_supplicant.conf
 ### ssh の設定
 
 `apkovl/root/.ssh/authorized_keys` をパーミッション 600 で配置後ビルド
+
+## ライセンス
+
+イメージに含まれているソフトウェアの[ライセンス情報](https://pkgs.alpinelinux.org/packages)を参照してください。
+本リポジトリ内のソフトウェアは CC0-1.0 ライセンスです。
