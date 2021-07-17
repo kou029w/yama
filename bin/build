@@ -5,7 +5,7 @@
 cd -- "$(dirname -- "$0")/.."
 set -eux
 version="$(bin/version)"
-bin/import "${version}" docker.pkg.github.com/kou029w/yama/minirootfs
+bin/import "${version}" ghcr.io/kou029w/yama/minirootfs
 rm -rf dist
 mkdir dist
 bin/download "${version}" dist

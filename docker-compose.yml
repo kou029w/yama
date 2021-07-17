@@ -1,7 +1,7 @@
 version: "3"
 services:
   minirootfs:
-    image: docker.pkg.github.com/kou029w/yama/minirootfs
+    image: ghcr.io/kou029w/yama/minirootfs
     volumes:
       - ./cache:/etc/apk/cache
       - ./apkovl/etc/apk/repositories:/etc/apk/repositories
