@@ -1,7 +1,7 @@
 name: build
 on:
   workflow_dispatch:
-  schedule: [{ cron: "0 21 * * sun" }] # Every Monday at 6am Asia/Tokyo UTC+9
+  push: { branches: [master] }
 jobs:
   main:
     runs-on: ubuntu-20.04
