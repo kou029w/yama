@@ -11,5 +11,5 @@ mkdir dist
 bin/download "${version}" dist
 docker-compose run --rm minirootfs sh -c 'apk update && apk add'
 ssh-keygen -A -f apkovl
-cp -a cache dist
+cp -a usercfg.txt cache -t dist
 tar czf dist/localhost.apkovl.tar.gz --owner=0 --group=0 -C apkovl .
