@@ -12,4 +12,6 @@ bin/download "${version}" dist
 docker-compose run --rm minirootfs sh -c 'apk update && apk add'
 ssh-keygen -A -f apkovl
 cp -a usercfg.txt cache -t dist
+gzip -cdk overlay.img.gz > dist/overlay.img
+docker-compose run --rm builder
 tar czf dist/localhost.apkovl.tar.gz --owner=0 --group=0 -C apkovl .

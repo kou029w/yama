@@ -6,3 +6,17 @@ services:
       - ./cache:/etc/apk/cache
       - ./apkovl/etc/apk/repositories:/etc/apk/repositories
       - ./apkovl/etc/apk/world:/etc/apk/world
+  builder:
+    image: ghcr.io/kou029w/yama/minirootfs
+    volumes:
+      - ./cache:/etc/apk/cache
+      - ./apkovl/etc/apk/repositories:/etc/apk/repositories
+      - ./apkovl/etc/apk/world:/etc/apk/world
+      - ./fstab:/etc/fstab
+      - ./dist/overlay.img:/overlay.img
+    privileged: true
+    command: |
+      sh -c '
+        mount -a \
+          && apk add g++ linux-headers make nodejs npm python3
+      '

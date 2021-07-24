@@ -32,6 +32,7 @@ rsync -a dist/ /path/to/sd/
 - Docker Compose
 - curl
 - grep
+- gzip
 - jq
 - ruby
 - ssh-keygen

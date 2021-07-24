@@ -1,0 +1,4 @@
+/dev/usbdisk	/media/usb	vfat	noauto	0 0
+/dev/mmcblk0p1	/media/mmcblk0p1	vfat	rw,remount	0 0
+/media/mmcblk0p1/overlay.img	/media/overlay	ext4	rw,relatime,errors=remount-ro	0 0
+overlay	/usr	overlay	lowerdir=/usr,upperdir=/media/overlay/upper/usr,workdir=/media/overlay/work/usr	0 0
