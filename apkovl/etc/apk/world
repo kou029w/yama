@@ -1,3 +1,4 @@
 alpine-base
+i2c-tools
 openssh
 wpa_supplicant
