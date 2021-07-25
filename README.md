@@ -1,6 +1,6 @@
 # Megabit OS
 
-Raspberry Pi 向け OS のビルドするためのツール群
+[Megabit](https://github.com/kou029w/megabit) をすぐに試せる実行環境とそれをビルドするためのツール群
 
 - Alpine Linux ベース (armhf)
 - WiFi 対応
