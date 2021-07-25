@@ -1,17 +1,11 @@
 name: build
 on:
-  workflow_dispatch:
-  push: { branches: [master] }
+  push: { branches: [main] }
 jobs:
   main:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - run: sudo apt-get update
       - run: sudo apt-get install -y qemu-user-static
-      - name: Docker login
-        run: |
-          echo "${{ github.token }}" \
-            | docker login ghcr.io -u "${GITHUB_ACTOR}" --password-stdin
       - run: bin/build
-      - run: docker-compose push
