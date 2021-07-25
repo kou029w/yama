@@ -1,0 +1,4 @@
+#!/sbin/openrc-run
+name=megabit
+command="/usr/local/bin/megabit"
+pidfile="/var/run/megabit.pid"

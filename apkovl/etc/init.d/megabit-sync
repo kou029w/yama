@@ -1,0 +1,11 @@
+#!/sbin/openrc-run
+name=megabit-sync
+command="/usr/local/bin/megabit-sync"
+pidfile="/var/run/megabit-sync.pid"
+
+start_pre() {
+  mkdir -p /mnt/tmp
+  mount /usr/share/megabit/tmp.img /mnt/tmp
+  modprobe -r g_mass_storage
+  modprobe g_mass_storage file=/usr/share/megabit/tmp.img
+}

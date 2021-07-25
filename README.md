@@ -1,4 +1,4 @@
-# Yama
+# Megabit OS
 
 Raspberry Pi 向け OS のビルドするためのツール群
 

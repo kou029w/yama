@@ -1,2 +1,2 @@
-/overlay.img	/mnt	ext4	rw,relatime,errors=remount-ro	0 0
-overlay	/usr	overlay	lowerdir=/usr,upperdir=/mnt/upper/usr,workdir=/mnt/work/usr	0 0
+/overlay.img	/mnt/overlay	ext4	rw,relatime,errors=remount-ro	0 0
+overlay	/usr	overlay	lowerdir=/usr,upperdir=/mnt/overlay/upper/usr,workdir=/mnt/overlay/work/usr	0 0
