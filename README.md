@@ -2,9 +2,38 @@
 
 [Megabit](https://github.com/kou029w/megabit) をすぐに試せる実行環境とそれをビルドするためのツール群
 
-- Alpine Linux ベース (armhf)
-- WiFi 対応
-- その他オレオレカスタマイズ
+## 使い方
+
+1. [Releases](https://github.com/kou029w/megabit-os/releases) から OS イメージをダウンロード
+2. イメージを microSD カードに書き込み
+3. Raspberry Pi Zero とパソコンを USB で接続し、1-3 分ほど待つと起動
+4. 自動的に認識される USB マスストレージのルートに index.js を作成することで自動的に実行
+   - 注意: index.js 以外の node_modules/ などは無視されます
+
+## サンプルコード
+
+index.js
+
+```js
+const { gpio } = require("megabit");
+const sleep = require("util").promisify(setTimeout);
+
+async function blink() {
+  for (;;) {
+    await gpio(26).write(1);
+    await sleep(1000);
+    await gpio(26).write(0);
+    await sleep(1000);
+  }
+}
+
+blink();
+```
+
+## 詳細
+
+- Alpine Linux v3.14 ベース (armhf)
+- Node.js v14.17.1
 
 ## ビルド
 
