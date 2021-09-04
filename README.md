@@ -33,7 +33,7 @@ blink();
 ## 詳細
 
 - Alpine Linux v3.14 ベース (armhf)
-- Node.js v14.17.1
+- Node.js v14.17.6
 
 ## ビルド
 
