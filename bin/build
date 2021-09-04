@@ -15,3 +15,4 @@ cp -a usercfg.txt cache -t dist
 gzip -cdk overlay.img.gz > dist/overlay.img
 docker-compose run --rm builder
 tar czf dist/localhost.apkovl.tar.gz --owner=0 --group=0 -C apkovl .
+tar czf megabit-armhf.tar.gz --owner=0 --group=0 -C dist .

@@ -50,7 +50,7 @@ bin/build
 ### SD カードに書き込み
 
 ```sh
-rsync -a dist/ /path/to/sd/
+tar xf megabit-armhf.tar.gz -C /path/to/sd/
 ```
 
 ### 前提条件
