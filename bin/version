@@ -1,10 +1,13 @@
-#!/bin/sh
+#!/usr/bin/env ruby
 # 最新のバージョンを取得
 # Usage: bin/version
-# Required: curl grep jq ruby
-set -eu
-base="http://dl-cdn.alpinelinux.org/alpine/latest-stable/releases/armhf"
-curl -s "${base}/latest-releases.yaml" \
-  | ruby -ryaml -rjson -e 'puts(YAML.load($<).to_json)' \
-  | jq -r '.[] | select(.title == "Raspberry Pi").file' \
-  | grep -Eo '[0-9]+\.[0-9]+\.[0-9]+'
+require "open-uri"
+require "yaml"
+
+base = "http://dl-cdn.alpinelinux.org/alpine/latest-stable/releases/armhf"
+url = "#{base}/latest-releases.yaml"
+io = URI.open(url)
+yaml = YAML.load(io)
+version = yaml.dig(0, "version")
+
+puts version

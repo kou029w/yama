@@ -49,7 +49,7 @@ bin/img-gen
 - Docker
 - Docker Compose
 - qemu-user-static
-- awk, bash, curl, fallocate, grep, gzip, gzip, jq, losetup, mkfs.fat, parted, ruby, ssh-keygen, tar, xargs
+- awk, bash, curl, fallocate, grep, gzip, gzip, losetup, mkfs.fat, parted, ruby, ssh-keygen, tar, xargs
 
 ### WiFi の設定
 
