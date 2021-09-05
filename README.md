@@ -39,18 +39,7 @@ blink();
 
 ```sh
 bin/build
-```
-
-### SD カードのフォーマット
-
-- FAT32 (LBA)
-- boot フラグ付ける
-- ボリュームラベル付けない
-
-### SD カードに書き込み
-
-```sh
-tar xf megabit-armhf.tar.gz -C /path/to/sd/
+bin/img-gen
 ```
 
 ### 前提条件
@@ -59,14 +48,8 @@ tar xf megabit-armhf.tar.gz -C /path/to/sd/
 - binfmt-support 2.1.7+
 - Docker
 - Docker Compose
-- curl
-- grep
-- gzip
-- jq
-- ruby
-- ssh-keygen
-- bash
 - qemu-user-static
+- awk, bash, curl, fallocate, grep, gzip, gzip, jq, losetup, mkfs.fat, parted, ruby, ssh-keygen, tar, xargs
 
 ### WiFi の設定
 

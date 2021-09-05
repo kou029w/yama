@@ -9,3 +9,4 @@ jobs:
       - run: sudo apt-get update
       - run: sudo apt-get install -y qemu-user-static
       - run: bin/build
+      - run: sudo bin/img-gen

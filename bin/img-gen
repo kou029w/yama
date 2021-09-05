@@ -1,0 +1,25 @@
+#!/bin/sh
+# デバイスイメージファイルの生成
+# Usage: bin/img-gen
+# Required: gzip awk fallocate parted xargs losetup mkfs.fat tar
+cd -- "$(dirname -- "$0")/.."
+set -eux
+size="$(gzip -l megabit-armhf.tar.gz | awk 'END{printf"%.f",$2*1.02}')"
+fallocate -l "${size}" megabit-armhf.img
+xargs -l parted -s megabit-armhf.img <<EOF
+mklabel msdos
+mkpart primary fat32 0 100%
+set 1 boot on
+EOF
+dev="$(losetup -f)"
+finally="losetup -d '${dev}'"
+trap 'sh -c "${finally}"' EXIT
+losetup -P "${dev}" megabit-armhf.img
+part="${dev}p1"
+mkfs.fat "${part}"
+tmp="$(mktemp -d)"
+finally="rmdir '${tmp}'; ${finally}"
+mount "${part}" "${tmp}"
+finally="umount '${tmp}'; ${finally}"
+tar xf megabit-armhf.tar.gz -C "${tmp}"
+finally="${finally}; gzip -f megabit-armhf.img"
