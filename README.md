@@ -6,7 +6,7 @@
 
 1. [Releases](https://github.com/kou029w/megabit-os/releases) から OS イメージをダウンロード
 2. イメージを microSD カードに書き込み
-3. Raspberry Pi Zero とパソコンを USB で接続し、1-3 分ほど待つと起動
+3. Raspberry Pi Zero とパソコンを USB で接続し、2 分待つ
 4. 自動的に認識される USB マスストレージのルートに index.js を作成することで自動的に実行
    - 注意: index.js 以外の node_modules/ などは無視されます
 
