@@ -1,3 +1,0 @@
-#!/bin/sh
-nodemon --delay 1 --watch /usr/share/megabit/tmp.img --signal SIGTERM --exec 'umount /mnt/tmp; mount /usr/share/megabit/tmp.img /mnt/tmp; rsync -a --delete --exclude=node_modules/ /mnt/tmp/ /tmp/' &
-echo $! > /var/run/megabit-sync.pid
