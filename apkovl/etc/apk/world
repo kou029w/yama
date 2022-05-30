@@ -1,5 +1,4 @@
 alpine-base
 i2c-tools
 openssh
-rsync
 wpa_supplicant

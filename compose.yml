@@ -15,9 +15,7 @@ services:
       - ./dist/overlay.img:/overlay.img
     privileged: true
     command: |
-      sh -exc '
-        mkdir -p /mnt/overlay
-        mount -a
-        apk add g++ linux-headers make nodejs npm python3
-        npm install -g megabit nodemon
+      sh -c '
+        mount -a \
+          && apk add g++ linux-headers make nodejs npm python3
       '

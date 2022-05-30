@@ -1,4 +1,0 @@
-#!/bin/sh
-export NODE_PATH=$(npm root -g)
-nodemon --delay 1 --watch /tmp --signal SIGTERM --exec 'node /tmp/index.js || true' &
-echo $! > /var/run/megabit.pid
