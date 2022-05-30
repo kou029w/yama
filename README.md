@@ -9,6 +9,7 @@ Raspberry Pi Zero 向け OS のビルドするためのツール群
 ## ビルド
 
 ```sh
+bin/overlay-gen
 bin/build
 bin/img-gen
 ```
@@ -20,7 +21,7 @@ bin/img-gen
 - Docker
 - Docker Compose
 - qemu-user-static
-- awk, bash, curl, fallocate, grep, gzip, losetup, mkfs.fat, parted, python3, ssh-keygen, tar, xargs
+- awk, bash, curl, fallocate, grep, gzip, losetup, mkfs.ext4, mkfs.fat, parted, python3, ssh-keygen, tar, xargs
 
 ### WiFi の設定
 
