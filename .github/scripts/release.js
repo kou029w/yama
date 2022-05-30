@@ -9,12 +9,12 @@ module.exports = async function ({ github, context, glob }) {
     ...context.repo,
     release_id: context.payload.release.id,
   };
-  let body = "## Megabit OS\n";
-  const globber = await glob.create("megabit-armhf.*.gz");
+  let body = "## Yama\n";
+  const globber = await glob.create("yama-armhf.*.gz");
   for await (const file of globber.globGenerator()) {
     const name = path
       .basename(file)
-      .replace(/^megabit-armhf[.]/, `megabit-${version}-armhf.`);
+      .replace(/^yama-armhf[.]/, `yama-${version}-armhf.`);
     const data = await fs.readFile(file);
     await github.repos.uploadReleaseAsset({ ...target, name, data });
     const hash = crypto.createHash("sha256").update(data).digest("hex");

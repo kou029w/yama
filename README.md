@@ -1,39 +1,10 @@
-# Megabit OS
+# Yama
 
-[Megabit](https://github.com/kou029w/megabit) をすぐに試せる実行環境とそれをビルドするためのツール群
+Raspberry Pi Zero 向け OS のビルドするためのツール群
 
-## 使い方
-
-1. [Releases](https://github.com/kou029w/megabit-os/releases) から OS イメージをダウンロード
-2. イメージを microSD カードに書き込み
-3. Raspberry Pi Zero とパソコンを USB で接続し、2 分待つ
-4. 自動的に認識される USB マスストレージのルートに index.js を作成することで自動的に実行
-   - 注意: index.js 以外の node_modules/ などは無視されます
-
-## サンプルコード
-
-index.js
-
-```js
-const { gpio } = require("megabit");
-const sleep = require("util").promisify(setTimeout);
-
-async function blink() {
-  for (;;) {
-    await gpio(26).write(1);
-    await sleep(1000);
-    await gpio(26).write(0);
-    await sleep(1000);
-  }
-}
-
-blink();
-```
-
-## 詳細
-
-- Alpine Linux v3.14 ベース (armhf)
-- Node.js v14.17.6
+- Alpine Linux ベース (armhf)
+- WiFi 対応
+- その他オレオレカスタマイズ
 
 ## ビルド
 
@@ -49,7 +20,7 @@ bin/img-gen
 - Docker
 - Docker Compose
 - qemu-user-static
-- awk, bash, curl, fallocate, grep, gzip, gzip, losetup, mkfs.fat, parted, ruby, ssh-keygen, tar, xargs
+- awk, bash, curl, fallocate, grep, gzip, losetup, mkfs.fat, parted, ruby, ssh-keygen, tar, xargs
 
 ### WiFi の設定
 

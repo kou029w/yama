@@ -14,8 +14,8 @@ jobs:
       - run: sudo bin/img-gen
       - uses: actions/upload-artifact@v2
         with:
-          name: megabit-armhf
-          path: megabit-armhf.*
+          name: yama-armhf
+          path: yama-armhf.*
   release:
     if: github.event.release.prerelease
     needs: main
@@ -23,7 +23,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/download-artifact@v2
-        with: { name: megabit-armhf }
+        with: { name: yama-armhf }
       - uses: actions/github-script@v4
         with:
           script: |
