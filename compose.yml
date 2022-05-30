@@ -1,4 +1,3 @@
-version: "3"
 services:
   minirootfs:
     image: ghcr.io/kou029w/yama/minirootfs

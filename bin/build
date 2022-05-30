@@ -1,7 +1,7 @@
 #!/bin/sh
 # ビルド
 # Usage: bin/build
-# Required: docker-compose
+# Required: docker compose
 cd -- "$(dirname -- "$0")/.."
 set -eux
 version="$(bin/version)"
@@ -9,10 +9,10 @@ bin/import "${version}" ghcr.io/kou029w/yama/minirootfs
 rm -rf dist
 mkdir dist
 bin/download "${version}" dist
-docker-compose run --rm minirootfs sh -c 'apk update && apk add'
+docker compose run --rm minirootfs sh -c 'apk update && apk add'
 ssh-keygen -A -f apkovl
 cp -a usercfg.txt cache -t dist
 gzip -cdk overlay.img.gz > dist/overlay.img
-docker-compose run --rm builder
+docker compose run --rm builder
 tar czf dist/localhost.apkovl.tar.gz --owner=0 --group=0 -C apkovl .
 tar czf yama-armhf.tar.gz --owner=0 --group=0 -C dist .
