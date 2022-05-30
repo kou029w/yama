@@ -1,4 +1,0 @@
-::sysinit:/sbin/openrc sysinit
-::sysinit:/sbin/openrc boot
-::wait:/sbin/openrc default
-ttyGS0::respawn:/sbin/getty -L ttyGS0 115200 vt100
