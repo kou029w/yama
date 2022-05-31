@@ -6,12 +6,20 @@ Raspberry Pi Zero 向け OS のビルドするためのツール群
 - WiFi 対応
 - その他オレオレカスタマイズ
 
+## 使い方
+
+1. [Releases](https://github.com/kou029w/yama/releases) からイメージをダウンロード
+2. イメージを microSD カードに書き込む
+3. (必要に応じて) microSD カードの中の setup-yama ファイルを編集して保存
+4. microSD カードを Raspberry Pi Zero に差し込む
+5. Raspberry Pi Zero の電源投入
+
+電源投入後、2 分で起動完了
+
 ## ビルド
 
 ```sh
-bin/overlay-gen
 bin/build
-bin/img-gen
 ```
 
 ### 前提条件
@@ -21,19 +29,7 @@ bin/img-gen
 - Docker
 - Docker Compose
 - qemu-user-static
-- awk, bash, curl, fallocate, grep, gzip, losetup, mkfs.ext4, mkfs.fat, parted, python3, ssh-keygen, tar, xargs
-
-### WiFi の設定
-
-`apkovl/etc/wpa_supplicant/wpa_supplicant.conf` 配置後ビルド
-
-```sh
-bin/conf-gen | tee apkovl/etc/wpa_supplicant/wpa_supplicant.conf
-```
-
-### ssh の設定
-
-`apkovl/root/.ssh/authorized_keys` をパーミッション 600 で配置後ビルド
+- awk, curl, fallocate, gzip, losetup, mkfs.ext4, mkfs.fat, parted, python3, tar, xargs
 
 ## ライセンス
 

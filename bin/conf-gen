@@ -1,9 +1,0 @@
-#!/bin/bash
-# wpa_supplicant.conf の生成
-# Usage: bin/conf-gen
-# Required: wpa_supplicant grep
-set -euo pipefail
-read -p 'Please enter ssid: ' ssid
-read -p 'Please enter passphrase: ' -s passphrase
-wpa_passphrase "$ssid" "$passphrase" \
-  | grep -v '#psk='

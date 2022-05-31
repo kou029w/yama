@@ -1,0 +1,6 @@
+#!/sbin/openrc-run
+start() {
+  if [ -x /media/mmcblk0p1/setup-yama ]; then
+    /media/mmcblk0p1/setup-yama
+  fi
+}

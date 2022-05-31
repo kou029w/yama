@@ -1,0 +1,27 @@
+#!/bin/sh
+set -eu
+cd -- "$(dirname -- "$0")"
+exec > setup-yama.log 2>&1
+
+ssid=""
+passphrase=""
+authorized_key=""
+
+if [ -n "$ssid" ]; then
+  wpa_passphrase "$ssid" "$passphrase" > /etc/wpa_supplicant/wpa_supplicant.conf
+  service wpa_supplicant restart
+fi
+
+if [ -n "$authorized_key" ]; then
+  mkdir -p /root/.ssh
+  chmod 700 /root/.ssh
+  echo "$authorized_key" > /root/.ssh/authorized_keys
+  chmod 600 /root/.ssh/authorized_keys
+  ssh-keygen -A
+  service sshd restart
+fi
+
+lbu include /root
+lbu commit -d mmcblk0p1
+rm -f -- "$0"
+echo ok

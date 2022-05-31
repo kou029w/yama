@@ -1,20 +1,20 @@
 #!/bin/sh
 # オーバーレイイメージファイルの生成
-# Usage: bin/overlay-gen
+# Usage: bin/overlay-gen dist/overlay.img
 # Required: fallocate losetup mkfs.ext4 gzip
 cd -- "$(dirname -- "$0")/.."
 set -eux
 size=512m
-fallocate -l "${size}" overlay.img
-mkfs.ext4 overlay.img
+image="$1"
+fallocate -l "${size}" "${image}"
+mkfs.ext4 "${image}"
 dev="$(losetup -f)"
 finally="losetup -d '${dev}'"
 trap 'sh -c "${finally}"' EXIT
-losetup "${dev}" overlay.img
+losetup "${dev}" "${image}"
 tmp="$(mktemp -d)"
 finally="rmdir '${tmp}'; ${finally}"
 mount "${dev}" "${tmp}"
 finally="umount '${tmp}'; ${finally}"
 mkdir -p "${tmp}/work/usr"
 mkdir -p "${tmp}/upper/usr"
-finally="${finally}; gzip -f overlay.img"
