@@ -1,10 +1,10 @@
 #!/bin/sh
 # デバイスイメージファイルの生成
 # Usage: bin/img-gen yama-armhf.img
-# Required: gzip awk fallocate parted xargs losetup mkfs.fat tar
+# Required: gzip fallocate parted xargs losetup mkfs.fat tar
 cd -- "$(dirname -- "$0")/.."
 set -eux
-size="$(gzip -l yama-armhf.tar.gz | awk 'END{printf"%.f",$2*1.02}')"
+size=768m
 image="$1"
 fallocate -l "${size}" "${image}"
 xargs -l parted -s "${image}" <<EOF

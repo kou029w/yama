@@ -7,6 +7,10 @@ ssid=""
 passphrase=""
 authorized_key=""
 
+install_packages() {
+  # apk add g++ linux-headers make nodejs npm python3
+}
+
 if [ -n "$ssid" ]; then
   wpa_passphrase "$ssid" "$passphrase" > /etc/wpa_supplicant/wpa_supplicant.conf
   service wpa_supplicant restart
@@ -23,5 +27,6 @@ fi
 
 lbu include /root
 lbu commit -d mmcblk0p1
+install_packages
 rm -f -- "$0"
 echo ok

@@ -29,7 +29,7 @@ bin/build
 - Docker
 - Docker Compose
 - qemu-user-static
-- awk, curl, fallocate, gzip, losetup, mkfs.ext4, mkfs.fat, parted, python3, tar, xargs
+- curl, fallocate, gzip, losetup, mkfs.ext4, mkfs.fat, parted, python3, tar, xargs
 
 ## ライセンス
 
