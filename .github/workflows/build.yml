@@ -9,7 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: sudo apt-get update
       - run: sudo apt-get install -y qemu-user-static
       - run: sudo bin/build
       - uses: actions/upload-artifact@v2
@@ -22,10 +21,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/download-artifact@v2
-        with: { name: yama-armhf }
-      - uses: actions/github-script@v4
+      - uses: actions/download-artifact@v3
+        with:
+          name: yama-armhf
+      - uses: actions/github-script@v6
         with:
           script: |
-            const script = require("./.github/scripts/release.js");
-            await script({ github, context, glob });
+            const release = require("./.github/scripts/release.js");
+            await release({ github, context, glob });

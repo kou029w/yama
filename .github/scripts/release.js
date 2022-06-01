@@ -16,7 +16,7 @@ module.exports = async function ({ github, context, glob }) {
       .basename(file)
       .replace(/^yama-armhf[.]/, `yama-${version}-armhf.`);
     const data = await fs.readFile(file);
-    await github.repos.uploadReleaseAsset({ ...target, name, data });
+    await github.rest.repos.uploadReleaseAsset({ ...target, name, data });
     const hash = crypto.createHash("sha256").update(data).digest("hex");
     body = `${body}
 ${name.split(".").includes("img") ? "OS イメージ" : "ファイルシステム"}
@@ -24,5 +24,5 @@ ${name.split(".").includes("img") ? "OS イメージ" : "ファイルシステ�
 - ${name} (SHA256: \`${hash}\`)
 `;
   }
-  await github.repos.updateRelease({ ...target, body, prerelease: false });
+  await github.rest.repos.updateRelease({ ...target, body, prerelease: false });
 };
