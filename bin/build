@@ -10,9 +10,9 @@ rm -rf dist
 mkdir dist
 bin/download "${version}" dist
 docker compose run --rm minirootfs sh -c 'apk update && apk add'
-cp -a src/* cache -t dist
+cp -a src/bootfs/* cache -t dist
 bin/overlay-gen dist/overlay.img
 docker compose run --rm builder
-tar czf dist/localhost.apkovl.tar.gz --owner=0 --group=0 -C apkovl .
+tar czf dist/localhost.apkovl.tar.gz --owner=0 --group=0 -C src/rootfs .
 tar czf yama-armhf.tar.gz --owner=0 --group=0 -C dist .
 bin/img-gen yama-armhf.img
